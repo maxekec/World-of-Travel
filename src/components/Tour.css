@@ -1,0 +1,298 @@
+/* Общий контейнер секции */
+.location-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+    position: relative;
+  }
+  
+  /* Шапка секции */
+  .location-header {
+    position: relative;
+    margin-bottom: 30px;
+    text-align: left;
+  }
+  
+  .location-title {
+    font-size: 32px;
+    color: #1c1c1c;
+    margin: 0 0 10px;
+  }
+  
+  .location-subtitle {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  /* Стрелки переключения */
+  .location-arrows {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    gap: 8px;
+  }
+  
+  .arrow-btn {
+    border: none;
+    background-color: #E63946;
+    color: #fff;
+    font-size: 18px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .arrow-btn:hover {
+    background-color: #000000;
+  }
+  
+  /* Контейнер карточек */
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  /* Оформление карточки */
+  .card {
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: po;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Изображение внутри карточки */
+  .card-image {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+  }
+  
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  /* Тёмная подложка с информацией (внизу карточки) */
+  .card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: #fff;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+  
+  .card-overlay h3 {
+    margin: 0 0 5px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .overlay-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  /* Звёзды */
+  .star {
+    font-size: 16px;
+    color: #ccc; /* цвет неактивной звезды */
+    margin-right: 2px;
+  }
+  
+  .star.filled {
+    color: #ffbf00; /* цвет заполненной звезды */
+  }
+  
+  /* Цена */
+  .price {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  /* Страна */
+  .country {
+    font-size: 14px;
+  }
+  
+  /* Кнопка «Подробнее» */
+  .details-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ff4f4f, #e63946);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .details-button::before {
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: rgba(255, 255, 255, 0.3);
+    top: -50%;
+    left: -50%;
+    transform: rotate(30deg);
+    transition: all 0.4s ease-in-out;
+  }
+
+  .details-button:hover::before {
+    left: 120%;
+    top: 120%;
+  }
+
+  .details-button:hover {
+    background: linear-gradient(135deg, #d43d3d, #b82f2f);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(255, 79, 79, 0.5);
+  }
+  
+  /* Модальное окно — полупрозрачный фон на весь экран */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+/* Модальное окно */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.ReactModal__Overlay--after-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: #1b1b1b;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  text-align: left;
+  position: relative;
+  box-shadow: 0 0 15px rgba(255, 79, 79, 0.8);
+  color: white;
+  animation: scaleIn 0.3s ease-in-out;
+}
+  
+.details-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+/* Заголовок модального окна */
+.modal-content h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, #ff4f4f, #ff914d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Стили для списка внутри модального окна */
+.modal-content ul {
+  padding-left: 20px;
+}
+
+.modal-content ul li {
+  list-style: none;
+  position: relative;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.modal-content ul li::before {
+  content: "✓";
+  color: #ff914d;
+  font-size: 18px;
+  font-weight: bold;
+  position: absolute;
+  left: -20px;
+  top: 2px;
+}
+
+/* Кнопка закрытия */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: white;
+  transition: transform 0.2s;
+}
+
+.close-btn:hover {
+  transform: scale(1.2);
+}
+
+
+/* Анимации */
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
