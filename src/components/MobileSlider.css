@@ -1,3 +1,5 @@
+
+
 /* === Основной хедер === */
 .mobile-header {
     position: fixed;
@@ -126,7 +128,6 @@
     color: white;
 }
 
-
 .swiper-button-next:active, .swiper-button-prev:active {
     background-color: rgba(0, 0, 0, 0.8); /* Темнее при нажатии */
 }
@@ -179,4 +180,77 @@
         width: 18px; /* Уменьшаем размер иконки на мобильной версии */
         height: 18px;
     }
+}
+
+
+/* === Стиль карточки === */
+.movie-card {
+    position: relative;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: px; /* Уменьшено для компактности */
+    border: 2px solid transparent;
+    width: 95%; /* Уменьшен размер карточки */
+    margin: 10px; /* Уменьшены отступы */
+}
+
+/* Элементы скрываются при раскрытии карточки */
+.movie-card .hidden {
+    display: none;
+}
+
+
+
+/* Анимация карточки при раскрытии */
+.movie-card.expanded {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* === Изображение === */
+.movie-poster {
+    width: 100%;
+    height: 180px; /* Уменьшен размер изображения */
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+    border-radius: 10px;
+}
+
+/* === Заголовок === */
+.movie-title {
+    text-align: center;
+    font-weight: bold;
+    padding: 8px; /* Уменьшены отступы */
+    font-family: 'Comfortaa', sans-serif;
+    color: #E63946;
+    font-size: 16px; /* Уменьшен размер шрифта */
+    font-family: 'Comfortaa', sans-serif;
+}
+
+/* === Информация о туре === */
+.movie-info {
+    width: 100%;
+    padding: 10px;
+    background: rgba(230, 57, 70, 0.1);
+    border-radius: 10px;
+    margin-top: 10px;
+    display: none; /* Скрыто по умолчанию */
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+/* Когда карточка раскрыта */
+.movie-card.expanded .movie-info {
+    display: block;
+    opacity: 1; /* Текст становится видимым */
+    font-family: 'Comfortaa', sans-serif;
 }

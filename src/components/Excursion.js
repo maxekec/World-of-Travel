@@ -8,7 +8,7 @@ import excu3 from '../images2/excu3.jpg';
 import excu4 from '../images2/excur4.jpeg';
 import excu5 from '../images2/excu5.webp';
 import excu6 from '../images2/excu6.jpg';
-import excu7 from '../images2/excu6.jpg';
+import excu7 from '../images2/fanchu.jpg';
 import excu8 from '../images2/excu7.jpg';
 
 // Массив с данными о локациях (8 штук)
@@ -17,7 +17,6 @@ const locations = [
     id: 1,
     title: 'Экскурсия "фиолетовые сады багульника"',
     country: 'Китай',
-    price: '¥400|чел',
     rating: 5,
     image: excu1,
   },
@@ -25,7 +24,6 @@ const locations = [
     id: 2,
     title: 'Экскурсия "едем к панде г. Чанчунь"',
     country: 'Китай',
-    price: '¥880|чел',
     rating: 4,
     image: excu2,
   },
@@ -33,7 +31,6 @@ const locations = [
     id: 3,
     title: 'Экскурсия "музей динозавров + г. Яньцзи"',
     country: 'Китай',
-    price: '¥330|чел',
     rating: 5,
     image: excu3,
   },
@@ -41,7 +38,6 @@ const locations = [
     id: 4,
     title: 'Горячий источник "Лю Динь Шань"',
     country: 'Китай',
-    price: '¥550|чел',
     rating: 5,
     image: excu4,
   },
@@ -49,7 +45,6 @@ const locations = [
     id: 5,
     title: 'Горячий источник и сауна "Пиньшань"',
     country: 'Китай',
-    price: '¥150|чел',
     rating: 4,
     image: excu5,
   },
@@ -57,7 +52,6 @@ const locations = [
     id: 6,
     title: 'Глаза Хуньчунь + поющий фонтан + мост Хуньчунь',
     country: 'Китай',
-    price: '¥50|чел',
     rating: 5,
     image: excu6,
   },
@@ -65,7 +59,6 @@ const locations = [
     id: 7,
     title: 'Живописный район Фанчуань + музей Хуньчунь',
     country: 'Китай',
-    price: '¥275|чел',
     rating: 5,
     image: excu7,
   },
@@ -73,14 +66,13 @@ const locations = [
     id: 8,
     title: 'Однодневные туры',
     country: 'Китай',
-    price: '¥50-750|чел',
     rating: 4,
     image: excu8,
   },
 ];
 
 function LocationCards() {
-  const phoneNumber = "+79245247565"; // Укажи номер для WhatsApp
+  const phoneNumber = "+79020556001"; // Укажи номер для WhatsApp
 
   const handleBuyClick = (locationTitle) => {
     console.log(`Пользователь нажал кнопку "Купить" для экскурсии: "${locationTitle}"`);
