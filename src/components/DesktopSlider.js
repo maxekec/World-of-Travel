@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import "swiper/css/autoplay";
-import { Navigation, Autoplay } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 import { FaWhatsapp } from 'react-icons/fa';
 import poster1 from '../images2/yanzi-1.jpg';
 import poster2 from '../images2/mishan-3.jpg';
@@ -12,65 +15,76 @@ import poster4 from '../images2/lifetour-4.jpg';
 import poster5 from '../images2/excursion-5.jpg';
 import poster6 from '../images2/stomatolog-6.jpg';
 import poster7 from '../images2/kosmetolog-8.webp';
-import poster8 from '../images2/shopping-9.jpg';
 import './Slider.css';
 
 const DesktopSlider = () => {
     const [expandedIndex, setExpandedIndex] = useState(null);
-
+    useEffect(() => {
+        AOS.init({
+            duration: 1000, // Длительность анимации в миллисекундах
+            once: true, // Анимация срабатывает только один раз
+        });
+    }, []);
     const tours = [
-        { title: 'Янцзы', poster: poster1, info: (
+        { title: 'Индивидуальные туры', poster: poster1, info: (
             <>
-                Для жителей Якутии, Камчатки, Сахалина проезд до Владивостока в тур <span style={{ color: '#E63946', fontWeight: 'bold' }}>НЕ ВХОДИТ.</span><br />
-                Все выезды только с Владивостока.<br />
-                <span style={{ color: '#32CD32', fontWeight: 'bold' }}>Что включено:</span> Ранний выезд рейсовым автобусом из Владивостока с 4:00 до 7:00.<br />
-                Билет на скоростную электричку Хуньчунь/Янцзы, проезд на автобусе.<br />
-                Завтраки, проживание в отеле, русскоговорящий переводчик, групповой список, медицинская страховка.
+                <p>Продолжительность тура: от 4 дней.</p>
+                <p>Направления: Харбин, Далянь, Пекин, Шанхай, Санья.</p>
+                <p>Гостиницы: 3х звездочные, 4х звездочные, 5ти звездочные.</p>
+                <p><strong>Стоимость: от 30.000₽</strong></p>
             </>
-        )},
-        { title: 'Мишань', poster: poster2, info: (
+        ), highlight: 'В стоимость туров входит: проезд, проживание, завтраки, страховка, трансфер, услуги гид-переводчика.' },
+        
+        { title: 'Авторские туры', poster: poster2, info: (
             <>
-                Для жителей Якутии, Камчатки, Сахалина проезд до Владивостока в тур <span style={{ color: '#E63946', fontWeight: 'bold' }}>НЕ ВХОДИТ.</span><br />
-                Все выезды только с Владивостока.<br />
-                <span style={{ color: '#32CD32', fontWeight: 'bold' }}>Что включено:</span> Ранний выезд рейсовым автобусом из Владивостока с 4:00 до 7:00, проживание в отеле, русскоговорящий переводчик, групповой список, медицинская страховка.
+                <p>Продолжительность тура: от 4 дней.</p>
+                <p>Направления: Чайбаньшань, Вейхай, Санья.</p>
+                <p>Гостиницы: 3х звездочные, 4х звездочные, 5ти звездочные.</p>
+                <p><strong>Стоимость зависит от количества дней и уровня гостиницы.</strong></p>
             </>
-        )},
-        { title: 'Хуньчунь', poster: poster3, info: (
+        ), highlight: 'В стоимость туров входит: проезд, проживание, завтраки, страховка, трансфер, услуги гид-переводчика.' },
+
+        { title: 'Групповые туры в Хуньчунь', poster: poster3, info: (
             <>
-                Для жителей Якутии, Камчатки, Сахалина проезд до Владивостока в тур <span style={{ color: '#E63946', fontWeight: 'bold' }}>НЕ ВХОДИТ.</span><br />
-                Все выезды только с Владивостока.<br />
-                <span style={{ color: '#32CD32', fontWeight: 'bold' }}>Что включено:</span> Ранний выезд рейсовым автобусом из Владивостока с 4:00 до 7:00, завтраки, проживание в отеле, русскоговорящий переводчик, групповой список, медицинская страховка.
+                <p>Продолжительность тура: 4 дня и 3 ночи.</p>
+                <p><strong>от 9000₽ - 3х звездочная гостиница.</strong></p>
+                <p><strong>от 13.000₽ - 5ти звездочная гостиница.</strong></p>
             </>
-        )},
-        { title: 'Лечебно-оздоровительный тур', poster: poster4, info: (
+        ), highlight: 'В стоимость туров входит: проезд, проживание, завтраки, страховка, трансфер, услуги гид-переводчика.' },
+
+        { title: 'Лечебно-оздоровительные туры в Хуньчунь', poster: poster4, info: (
             <>
-                От 5 до 10 дней, цена от 9000₽, может меняться в зависимости от курса.<br />
-                <span style={{ color: '#E63946', fontWeight: 'bold' }}>Пластическая хирургия в Янцзы.</span> Также на оздоровительные туры у нас действует кеш-бек до 100%.
+                <p>Продолжительность тура: от 7 до 15 дней.</p>
+                <p>Гостиницы: 3х звездочные, 4х звездочные, 5ти звездочные.</p>
+                <p><strong>Стоимость: от 9000₽</strong></p>
+                <p style={{ color: 'green' }}>На лечебно-оздоровительные туры действует 100% кэш-бек.</p>
+
             </>
-        )},
-        { title: 'Экскурсионный тур', poster: poster5, info: (
+        ), highlight: 'В стоимость туров входит: проезд, проживание, завтраки, страховка, трансфер, услуги гид-переводчика.' },
+
+        { title: 'Экскурсионные туры', poster: poster5, info: (
             <>
-                От 4 дней, цена от 9000₽, может меняться в зависимости от курса.
+                <p>Направления: Хуньчунь, Янцзы, Мишань.</p>
+                <p>Гостиницы: 3х звездочные, 4х звездочные, 5ти звездочные.</p>
+                <p><strong>Стоимость: от 9000₽</strong></p>
             </>
-        )},
-        { title: 'Стоматологический тур', poster: poster6, info: (
+        ), highlight: 'В стоимость туров входит: проезд, проживание, завтраки, страховка, трансфер, услуги гид-переводчика.' },
+
+        { title: 'Стоматологические туры в Хуньчунь', poster: poster6, info: (
             <>
-                От 4 до 10 дней, цена от 9000₽, может меняться в зависимости от курса.<br />
-                г. Хуньчунь, <span style={{ color: '#E63946', fontWeight: 'bold' }}>пластическая хирургия в Янцзы.</span>
+                <p>Продолжительность тура: от 4 до 15 дней.</p>
+                <p>Гостиницы: 3х звездочные, 4х звездочные, 5ти звездочные.</p>
+                <p><strong>Стоимость: от 9000₽</strong></p>
             </>
-        )},
-        { title: 'Имплантация и косметология', poster: poster7, info: (
+        ), highlight: 'В стоимость туров входит: проезд, проживание, завтраки, страховка, трансфер, услуги гид-переводчика.' },
+
+        { title: 'Имплантация и косметология в Хуньчуне', poster: poster7, info: (
             <>
-                От 4 до 15 дней, цена от 9900₽, цена может меняться в зависимости от курса.<br />
-                г. Хуньчунь, <span style={{ color: '#E63946', fontWeight: 'bold' }}>пластическая хирургия в Янцзы.</span>
+                <p>Продолжительность тура: от 4 дней</p>
+                <p>Гостиницы: 3х звездочные, 4х звездочные, 5ти звездочные.</p>
+                <p><strong>Стоимость: от 9000₽</strong></p>
             </>
-        )},
-        { title: 'Шоппинг тур', poster: poster8, info: (
-            <>
-                От 4 дней, цена от 6500₽, цена может меняться в зависимости от курса.<br />
-                г. Мишань.
-            </>
-        )}
+        ), highlight: 'В стоимость туров входит: проезд, проживание, завтраки, страховка, трансфер, услуги гид-переводчика.' }
     ];
 
     const handleCardClick = (index) => {
@@ -83,22 +97,21 @@ const DesktopSlider = () => {
 
     return (
         <div className="desktop-slider">
-            <Swiper modules={[Navigation, Autoplay]} slidesPerView={3} spaceBetween={20} loop={true} navigation autoplay={{ delay: 5000 }}>
+            <Swiper modules={[Navigation]} slidesPerView={3} spaceBetween={20} loop={true} navigation>
                 {tours.map((tour, index) => (
                     <SwiperSlide key={index}>
                         <div className={`movie-card ${expandedIndex === index ? 'expanded' : ''}`} onClick={() => handleCardClick(index)}>
                             <img src={tour.poster} alt={tour.title} className={`movie-poster ${expandedIndex === index ? 'hidden' : ''}`} />
                             <div className={`movie-title ${expandedIndex === index ? 'hidden' : ''}`}>{tour.title}</div>
 
-                            {/* Кнопка WhatsApp */}
                             <div className={`whatsapp-button ${expandedIndex === index ? 'hidden' : ''}`} onClick={(e) => { e.stopPropagation(); handleWhatsappClick(tour.title); }}>
                                 <FaWhatsapp className="whatsapp-icon" />
                                 <span>Написать в WhatsApp</span>
                             </div>
 
-                            {/* Раскрытый текст */}
                             <div className={`movie-info ${expandedIndex === index ? 'expanded' : ''}`}>
-                                <p>{tour.info}</p>
+                                <div className="highlight-box">{tour.highlight}</div>
+                                {tour.info}
                             </div>
                         </div>
                     </SwiperSlide>
